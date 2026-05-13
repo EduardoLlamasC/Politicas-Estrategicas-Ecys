@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Políticas Estratégicas — Laboratorios ECYS-FIUSAC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:          #0f1117;
+      --bg-card:     #181c27;
+      --bg-card2:    #1e2233;
+      --border:      rgba(255,255,255,0.07);
+      --gold:        #c9972c;
+      --gold-light:  #e6b84a;
+      --gold-dim:    rgba(201,151,44,0.15);
+      --silver:      #8a9bb8;
+      --white:       #f0f2f7;
+      --white-dim:   rgba(240,242,247,0.55);
+      --accent:      #3a7bd5;
+      --accent-dim:  rgba(58,123,213,0.12);
+      --radius:      12px;
+      --radius-lg:   20px;
+      --shadow:      0 8px 40px rgba(0,0,0,0.45);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ─────────────────────────────────────────── */
+    header {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      background: linear-gradient(160deg, #0d1020 0%, #12172a 60%, #1a1206 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(201,151,44,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(58,123,213,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 56px 32px 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-logos {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 44px;
+    }
+
+    .header-logos img {
+      height: 56px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0.95);
+    }
+
+    .logo-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--border);
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,151,44,0.3);
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      line-height: 1.2;
+      color: var(--white);
+      max-width: 780px;
+      margin-bottom: 20px;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .header-sub {
+      color: var(--silver);
+      font-size: 15px;
+      font-weight: 300;
+      max-width: 620px;
+      margin-bottom: 40px;
+    }
+
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .meta-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--white-dim);
+    }
+
+    .meta-chip .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      background: rgba(15,17,23,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-inner::-webkit-scrollbar { display: none; }
+
+    nav a {
+      display: block;
+      padding: 16px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--silver);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color .2s, border-color .2s;
+    }
+
+    nav a:hover { color: var(--white); border-bottom-color: var(--gold); }
+
+    /* ── MAIN LAYOUT ─────────────────────────────────────── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    section { padding-top: 72px; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .section-label .num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--white-dim);
+      font-size: 15px;
+      font-weight: 300;
+      margin-bottom: 14px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    /* ── CONTEXT GRID ────────────────────────────────────── */
+    .context-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .context-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .context-card .icon {
+      font-size: 24px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .context-card h4 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .context-card p { font-size: 14px; }
+
+    /* ── STATS ROW ───────────────────────────────────────── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.2rem;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--silver);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── FRAMEWORK BADGES ────────────────────────────────── */
+    .framework-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .fw-badge {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .fw-badge .fw-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .fw-badge .fw-icon.cobit  { background: rgba(201,151,44,0.15); }
+    .fw-badge .fw-icon.iso21  { background: rgba(58,123,213,0.15); }
+    .fw-badge .fw-icon.iso9   { background: rgba(80,180,120,0.15); }
+    .fw-badge .fw-icon.pdca   { background: rgba(180,80,160,0.15); }
+
+    .fw-badge .fw-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .fw-badge .fw-desc {
+      font-size: 12px;
+      color: var(--silver);
+    }
+
+    /* ── POLICIES ────────────────────────────────────────── */
+    .policies-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 8px;
+    }
+
+    .policy-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color .25s;
+    }
+
+    .policy-card:hover { border-color: rgba(201,151,44,0.3); }
+
+    .policy-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 28px 28px 24px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .policy-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: rgba(201,151,44,0.25);
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 44px;
+    }
+
+    .policy-meta { flex: 1; }
+
+    .policy-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .ptag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .ptag.cobit  { background: rgba(201,151,44,0.15); color: var(--gold-light); border: 1px solid rgba(201,151,44,0.25); }
+    .ptag.iso21  { background: rgba(58,123,213,0.15);  color: #7aafff; border: 1px solid rgba(58,123,213,0.25); }
+    .ptag.iso9   { background: rgba(80,180,120,0.15);  color: #7addb0; border: 1px solid rgba(80,180,120,0.25); }
+    .ptag.pdca   { background: rgba(180,80,160,0.15);  color: #d48fce; border: 1px solid rgba(180,80,160,0.25); }
+
+    .policy-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: var(--white);
+      line-height: 1.35;
+    }
+
+    .policy-toggle {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--silver);
+      font-size: 16px;
+      transition: transform .3s, background .2s;
+      margin-top: 4px;
+    }
+
+    .policy-card.open .policy-toggle {
+      transform: rotate(45deg);
+      background: var(--gold-dim);
+      color: var(--gold-light);
+      border-color: rgba(201,151,44,0.3);
+    }
+
+    .policy-body {
+      display: none;
+      padding: 0 28px 28px 92px;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+
+    .policy-card.open .policy-body { display: block; }
+
+    .policy-section {
+      margin-bottom: 24px;
+    }
+
+    .policy-section-title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .policy-section p { font-size: 14px; margin-bottom: 8px; }
+
+    .steps-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .steps-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 8px 0;
+      font-size: 14px;
+      color: var(--white-dim);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .steps-list li:last-child { border-bottom: none; }
+
+    .steps-list li::before {
+      content: '→';
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .kpi-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .kpi-chip {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: var(--silver);
+    }
+
+    .responsible-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .resp-chip {
+      background: var(--accent-dim);
+      border: 1px solid rgba(58,123,213,0.2);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: #7aafff;
+    }
+
+    /* ── PRINCIPLES ──────────────────────────────────────── */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .principle {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      border-top: 3px solid var(--gold);
+    }
+
+    .principle h4 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .principle p { font-size: 13.5px; }
+
+    /* ── PHASES ──────────────────────────────────────────── */
+    .phases-timeline {
+      position: relative;
+      margin-top: 32px;
+    }
+
+    .phases-timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), rgba(201,151,44,0.1));
+    }
+
+    .phase {
+      display: flex;
+      gap: 28px;
+      margin-bottom: 28px;
+      align-items: flex-start;
+    }
+
+    .phase-dot {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--gold-light);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .phase-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      flex: 1;
+    }
+
+    .phase-content h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .phase-content p { font-size: 14px; }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logos {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-logos img {
+      height: 32px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.55;
+      filter: grayscale(1);
+    }
+
+    .footer-text {
+      font-size: 12px;
+      color: var(--silver);
+      text-align: right;
+      opacity: 0.7;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .context-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .principles-grid { grid-template-columns: 1fr; }
+      .policy-body { padding-left: 28px; }
+      main { padding: 0 20px 60px; }
+      .header-inner { padding: 40px 20px 48px; }
+    }
+
+    @media (max-width: 480px) {
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .header-logos img { height: 40px; }
+    }
+
+    /* ── FADE-IN ANIMATION ───────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up { animation: fadeUp .6s ease both; }
+    .delay-1 { animation-delay: .1s; }
+    .delay-2 { animation-delay: .2s; }
+    .delay-3 { animation-delay: .3s; }
+    .delay-4 { animation-delay: .4s; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <div class="header-logos fade-up">
+      <img src="logo-ecys-fiusac.png" alt="DITT-ECYS FIUSAC" />
+      <div class="logo-divider"></div>
+      <img src="Screenshot_2025-03-22_at_11_32_50_AM.png" alt="COCOCYS" style="height:48px;" />
+    </div>
+
+    <div class="tag fade-up delay-1">Tesis de Grado · Ingeniería en Sistemas</div>
+
+    <h1 class="fade-up delay-2">
+      Políticas Estratégicas para la Gestión de<br/>
+      <em>Laboratorios Académicos</em>
+    </h1>
+
+    <p class="header-sub fade-up delay-3">
+      Escuela de Ciencias y Sistemas — Facultad de Ingeniería, USAC<br />
+      Basado en análisis cuantitativo y cualitativo del período 2015–2025
+    </p>
+
+    <div class="header-meta fade-up delay-4">
+      <span class="meta-chip"><span class="dot"></span>Marco COBIT</span>
+      <span class="meta-chip"><span class="dot"></span>ISO 21001:2018</span>
+      <span class="meta-chip"><span class="dot"></span>ISO 9001:2015</span>
+      <span class="meta-chip"><span class="dot"></span>Ciclo PDCA</span>
+      <span class="meta-chip"><span class="dot"></span>2015 – 2025</span>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════
+     NAV
+══════════════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#contexto">Contexto</a>
+    <a href="#marcos">Marcos Normativos</a>
+    <a href="#principios">Principios Rectores</a>
+    <a href="#politicas">Políticas</a>
+    <a href="#implementacion">Implementación</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════
+     MAIN
+══════════════════════════════════════════════════════ -->
+<main>
+
+  <!-- CONTEXTO -->
+  <section id="contexto">
+    <div class="section-label">
+      <span class="num">01 — Contexto</span>
+    </div>
+    <h2>Fundamento de la Investigación</h2>
+    <p>
+      La presente investigación analiza la gestión de laboratorios académicos en la Escuela de Ciencias y
+      Sistemas (ECYS) a lo largo de una década, combinando métodos cuantitativos y cualitativos para
+      diseñar políticas estratégicas alineadas con estándares internacionales de calidad y gobernanza.
+    </p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">10</div>
+        <div class="stat-label">Años de datos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">+40k</div>
+        <div class="stat-label">Asignaciones analizadas</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">64.6</div>
+        <div class="stat-label">Promedio híbrido</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Políticas diseñadas</div>
+      </div>
+    </div>
+
+    <div class="context-grid">
+      <div class="context-card">
+        <span class="icon">📊</span>
+        <h4>Análisis Cuantitativo</h4>
+        <p>Estadística descriptiva sobre crecimiento estudiantil, rendimiento académico y tasas de aprobación por período 2015–2025. Correlación de Pearson r = −0.0037 confirma independencia entre tamaño de grupo y rendimiento.</p>
+      </div>
+      <div class="context-card">
+        <span class="icon">🔍</span>
+        <h4>Análisis Cualitativo</h4>
+        <p>Identificación de hitos institucionales: pandemia COVID-19, virtualización de laboratorios, creación de la DTT y adopción de COCOCYS como puntos de inflexión estructural en el sistema académico.</p>
+      </div>
+      <div class="context-card">
+        <span class="icon">📈</span>
+        <h4>Tres Etapas Identificadas</h4>
+        <p><strong>Presencial</strong> (2015–2019): promedio 48.2 pts · <strong>Virtual</strong> (2020–2024): promedio 59.5 pts · <strong>Híbrido</strong> (2025): promedio 64.6 pts — mejora sostenida.</p>
+      </div>
+      <div class="context-card">
+        <span class="icon">🏛️</span>
+        <h4>Hallazgo Clave</h4>
+        <p>El tamaño del grupo no determina el rendimiento académico. Los factores pedagógicos, la modalidad educativa y la organización institucional tienen mayor influencia en los resultados.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARCOS NORMATIVOS -->
+  <section id="marcos">
+    <div class="section-label">
+      <span class="num">02 — Marcos Normativos</span>
+    </div>
+    <h2>Bases de Gobernanza y Calidad</h2>
+    <p>
+      Las políticas estratégicas propuestas se fundamentan en marcos internacionales reconocidos que
+      orientan la gestión institucional, la calidad académica y la mejora continua.
+    </p>
+
+    <div class="framework-row">
+      <div class="fw-badge">
+        <div class="fw-icon cobit">⚙️</div>
+        <div>
+          <div class="fw-name">COBIT</div>
+          <div class="fw-desc">Gobernanza y alineación estratégica</div>
+        </div>
+      </div>
+      <div class="fw-badge">
+        <div class="fw-icon iso21">📘</div>
+        <div>
+          <div class="fw-name">ISO 21001:2018</div>
+          <div class="fw-desc">Gestión de organizaciones educativas</div>
+        </div>
+      </div>
+      <div class="fw-badge">
+        <div class="fw-icon iso9">✅</div>
+        <div>
+          <div class="fw-name">ISO 9001:2015</div>
+          <div class="fw-desc">Gestión de calidad y procesos</div>
+        </div>
+      </div>
+      <div class="fw-badge">
+        <div class="fw-icon pdca">🔄</div>
+        <div>
+          <div class="fw-name">Ciclo PDCA</div>
+          <div class="fw-desc">Planificar · Ejecutar · Verificar · Actuar</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;">
+      <h3>Alineación con COBIT</h3>
+      <p>
+        COBIT aporta el marco de gobernanza orientado a la alineación estratégica, el control de procesos
+        y la medición del desempeño. Aplicado al contexto educativo, facilita la toma de decisiones basada
+        en datos y la definición de responsabilidades claras para la gestión de laboratorios.
+      </p>
+      <p>
+        ISO 21001 centra el diseño en el estudiante como beneficiario principal, integrando mejora continua
+        y evidencia objetiva. ISO 9001 refuerza la eficiencia operativa y la consistencia en la prestación
+        de servicios académicos.
+      </p>
+    </div>
+  </section>
+
+  <!-- PRINCIPIOS RECTORES -->
+  <section id="principios">
+    <div class="section-label">
+      <span class="num">03 — Principios Rectores</span>
+    </div>
+    <h2>Fundamentos de las Políticas</h2>
+    <p>Cinco principios articulan el diseño e implementación de las políticas estratégicas, asegurando coherencia institucional y orientación hacia resultados.</p>
+
+    <div class="principles-grid">
+      <div class="principle">
+        <h4>Toma de Decisiones Basada en Evidencia</h4>
+        <p>Uso sistemático de datos académicos históricos para planificación y gestión de laboratorios, reduciendo la subjetividad institucional.</p>
+      </div>
+      <div class="principle">
+        <h4>Planificación de Capacidad</h4>
+        <p>Asignación de estudiantes con criterios técnicos considerando infraestructura, recursos disponibles y características de cada curso.</p>
+      </div>
+      <div class="principle">
+        <h4>Mejora Continua</h4>
+        <p>Evaluación periódica del desempeño académico y operativo bajo el ciclo PDCA, identificando y aplicando ajustes orientados a la calidad.</p>
+      </div>
+      <div class="principle">
+        <h4>Adaptabilidad Institucional</h4>
+        <p>Estrategias flexibles que integren modalidades presencial, virtual e híbrida, respondiendo a cambios del entorno educativo.</p>
+      </div>
+      <div class="principle">
+        <h4>Alineación Estratégica</h4>
+        <p>Coherencia entre políticas y objetivos institucionales. COCOCYS como componente estructural de planificación y estandarización académica.</p>
+      </div>
+      <div class="principle" style="border-top-color: #3a7bd5;">
+        <h4>Gobernanza Transparente</h4>
+        <p>Responsabilidades definidas, mecanismos de evaluación medibles y reportes periódicos que fortalecen la rendición de cuentas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POLÍTICAS -->
+  <section id="politicas">
+    <div class="section-label">
+      <span class="num">04 — Políticas Estratégicas</span>
+    </div>
+    <h2>Catálogo de Políticas</h2>
+    <p>
+      Siete políticas estratégicas conforman el sistema integrado de gestión de laboratorios.
+      Cada política incluye procedimientos, responsables e indicadores de evaluación.
+    </p>
+
+    <div class="policies-grid" id="policiesContainer">
+
+      <!-- P1 -->
+      <div class="policy-card" onclick="toggle(this)">
+        <div class="policy-header">
+          <div class="policy-num">01</div>
+          <div class="policy-meta">
+            <div class="policy-tags">
+              <span class="ptag cobit">COBIT</span>
+              <span class="ptag iso9">ISO 9001</span>
+            </div>
+            <div class="policy-title">Política de Gestión de Capacidad de Laboratorios</div>
+          </div>
+          <div class="policy-toggle">+</div>
+        </div>
+        <div class="policy-body">
+          <div class="policy-section">
+            <div class="policy-section-title">Objetivo</div>
+            <p>Establecer un modelo estructurado para la asignación de estudiantes en laboratorios, garantizando condiciones adecuadas de aprendizaje y optimizando el uso de los recursos disponibles.</p>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Procedimiento de Implementación</div>
+            <ul class="steps-list">
+              <li>Recolección de datos históricos de asignación de estudiantes por curso y período.</li>
+              <li>Análisis de tendencias para identificar comportamientos recurrentes.</li>
+              <li>Definición de rangos de capacidad operativa por laboratorio.</li>
+              <li>Proyección de demanda académica para el siguiente período.</li>
+              <li>Ajuste de grupos o secciones según condiciones operativas vigentes.</li>
+            </ul>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Responsables</div>
+            <div class="responsible-row">
+              <span class="resp-chip">Coordinación Académica</span>
+              <span class="resp-chip">Jefes de Área</span>
+            </div>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Indicadores KPI</div>
+            <div class="kpi-row">
+              <span class="kpi-chip">Promedio de estudiantes / laboratorio</span>
+              <span class="kpi-chip">% laboratorios en rango establecido</span>
+              <span class="kpi-chip">Precisión de proyección vs. matrícula real</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="policy-card" onclick="toggle(this)">
+        <div class="policy-header">
+          <div class="policy-num">02</div>
+          <div class="policy-meta">
+            <div class="policy-tags">
+              <span class="ptag cobit">COBIT</span>
+              <span class="ptag iso21">ISO 21001</span>
+              <span class="ptag iso9">ISO 9001</span>
+            </div>
+            <div class="policy-title">Política de Planificación Académica Basada en Datos</div>
+          </div>
+          <div class="policy-toggle">+</div>
+        </div>
+        <div class="policy-body">
+          <div class="policy-section">
+            <div class="policy-section-title">Objetivo</div>
+            <p>Fortalecer la toma de decisiones institucionales mediante el uso sistemático de información histórica, análisis de tendencias y proyecciones de demanda académica.</p>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Procedimiento de Implementación</div>
+            <ul class="steps-list">
+              <li>Consolidación y depuración de bases de datos académicas institucionales.</li>
+              <li>Generación de reportes periódicos de crecimiento estudiantil y rendimiento.</li>
+              <li>Proyección de demanda por curso y área de conocimiento.</li>
+              <li>Ajuste de la planificación académica en función de resultados obtenidos.</li>
+            </ul>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Responsables</div>
+            <div class="responsible-row">
+              <span class="resp-chip">Coordinación Académica</span>
+              <span class="resp-chip">DTT</span>
+            </div>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Indicadores KPI</div>
+            <div class="kpi-row">
+              <span class="kpi-chip">Precisión de la planificación (%)</span>
+              <span class="kpi-chip">Frecuencia de uso de reportes</span>
+              <span class="kpi-chip">Cobertura de datos históricos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="policy-card" onclick="toggle(this)">
+        <div class="policy-header">
+          <div class="policy-num">03</div>
+          <div class="policy-meta">
+            <div class="policy-tags">
+              <span class="ptag iso21">ISO 21001</span>
+              <span class="ptag pdca">PDCA</span>
+            </div>
+            <div class="policy-title">Política de Monitoreo del Rendimiento Académico</div>
+          </div>
+          <div class="policy-toggle">+</div>
+        </div>
+        <div class="policy-body">
+          <div class="policy-section">
+            <div class="policy-section-title">Objetivo</div>
+            <p>Fortalecer el seguimiento sistemático del desempeño académico en los laboratorios, identificando tendencias y aplicando acciones de mejora oportunas.</p>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Procedimiento de Implementación</div>
+            <ul class="steps-list">
+              <li>Registro sistemático de notas y tasas de aprobación por curso y período.</li>
+              <li>Identificación de tendencias y comparación con períodos anteriores.</li>
+              <li>Evaluación del desempeño por área de conocimiento.</li>
+              <li>Aplicación de acciones de mejora cuando los indicadores superen umbrales críticos.</li>
+            </ul>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Responsables</div>
+            <div class="responsible-row">
+              <span class="resp-chip">Docentes</span>
+              <span class="resp-chip">Coordinadores de Área</span>
+            </div>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Indicadores KPI</div>
+            <div class="kpi-row">
+              <span class="kpi-chip">Promedio de notas por laboratorio</span>
+              <span class="kpi-chip">% de aprobación por curso</span>
+              <span class="kpi-chip">Variación semestral de rendimiento</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P4 -->
+      <div class="policy-card" onclick="toggle(this)">
+        <div class="policy-header">
+          <div class="policy-num">04</div>
+          <div class="policy-meta">
+            <div class="policy-tags">
+              <span class="ptag iso9">ISO 9001</span>
+              <span class="ptag pdca">PDCA</span>
+            </div>
+            <div class="policy-title">Política de Seguimiento, Control y Mejora Continua — COCOCYS</div>
+          </div>
+          <div class="policy-toggle">+</div>
+        </div>
+        <div class="policy-body">
+          <div class="policy-section">
+            <div class="policy-section-title">Objetivo</div>
+            <p>Establecer a COCOCYS como mecanismo institucional para la planificación, estandarización y actualización continua de contenidos de laboratorio, asegurando coherencia curricular.</p>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Procedimiento de Implementación</div>
+            <ul class="steps-list">
+              <li>Definición de estructuras base de contenido por curso bajo metodología COCOCYS.</li>
+              <li>Alineación de actividades prácticas con objetivos de aprendizaje definidos.</li>
+              <li>Documentación estandarizada de prácticas y criterios de evaluación.</li>
+              <li>Revisión periódica de contenidos con base en resultados académicos.</li>
+              <li>Actualización de materiales en función de tendencias tecnológicas y pedagógicas.</li>
+            </ul>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Responsables</div>
+            <div class="responsible-row">
+              <span class="resp-chip">Coordinadores Académicos</span>
+              <span class="resp-chip">Equipo COCOCYS</span>
+            </div>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Indicadores KPI</div>
+            <div class="kpi-row">
+              <span class="kpi-chip">% cursos estandarizados</span>
+              <span class="kpi-chip">Consistencia evaluativa (índice)</span>
+              <span class="kpi-chip">Ciclos de revisión completados</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P5 -->
+      <div class="policy-card" onclick="toggle(this)">
+        <div class="policy-header">
+          <div class="policy-num">05</div>
+          <div class="policy-meta">
+            <div class="policy-tags">
+              <span class="ptag cobit">COBIT</span>
+              <span class="ptag iso21">ISO 21001</span>
+            </div>
+            <div class="policy-title">Política de Gestión de Modalidad Híbrida</div>
+          </div>
+          <div class="policy-toggle">+</div>
+        </div>
+        <div class="policy-body">
+          <div class="policy-section">
+            <div class="policy-section-title">Objetivo</div>
+            <p>Formalizar el modelo académico híbrido integrando actividades virtuales y presenciales de manera estructurada, aprovechando las ventajas de ambas modalidades para mejorar el aprendizaje.</p>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Procedimiento de Implementación</div>
+            <ul class="steps-list">
+              <li>Definición de actividades virtuales: clases, contenido, seguimiento en plataforma.</li>
+              <li>Definición de actividades presenciales: prácticas de laboratorio y evaluaciones.</li>
+              <li>Integración y evaluación de plataformas digitales de soporte.</li>
+              <li>Medición del desempeño académico diferenciado por modalidad.</li>
+              <li>Ajuste del modelo híbrido según resultados y retroalimentación.</li>
+            </ul>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Responsables</div>
+            <div class="responsible-row">
+              <span class="resp-chip">Coordinación Académica</span>
+            </div>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Indicadores KPI</div>
+            <div class="kpi-row">
+              <span class="kpi-chip">Rendimiento por modalidad (δ)</span>
+              <span class="kpi-chip">Satisfacción estudiantil</span>
+              <span class="kpi-chip">Disponibilidad de plataformas (%)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P6 -->
+      <div class="policy-card" onclick="toggle(this)">
+        <div class="policy-header">
+          <div class="policy-num">06</div>
+          <div class="policy-meta">
+            <div class="policy-tags">
+              <span class="ptag cobit">COBIT</span>
+              <span class="ptag iso9">ISO 9001</span>
+            </div>
+            <div class="policy-title">Política de Gestión Tecnológica</div>
+          </div>
+          <div class="policy-toggle">+</div>
+        </div>
+        <div class="policy-body">
+          <div class="policy-section">
+            <div class="policy-section-title">Objetivo</div>
+            <p>Fortalecer el soporte tecnológico de los laboratorios asegurando la disponibilidad, actualización e integración de herramientas digitales que soporten el proceso formativo.</p>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Procedimiento de Implementación</div>
+            <ul class="steps-list">
+              <li>Evaluación periódica de herramientas tecnológicas existentes en laboratorios.</li>
+              <li>Identificación de necesidades de actualización de infraestructura.</li>
+              <li>Gestión de actualización y mantenimiento de equipos y software.</li>
+              <li>Integración de herramientas digitales con la plataforma académica.</li>
+              <li>Capacitación continua a docentes y auxiliares en el uso de tecnologías.</li>
+            </ul>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Responsables</div>
+            <div class="responsible-row">
+              <span class="resp-chip">DTT</span>
+              <span class="resp-chip">Coordinación Académica</span>
+            </div>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Indicadores KPI</div>
+            <div class="kpi-row">
+              <span class="kpi-chip">% equipos en estado operativo</span>
+              <span class="kpi-chip">Índice de disponibilidad tecnológica</span>
+              <span class="kpi-chip">Horas de capacitación / semestre</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P7 -->
+      <div class="policy-card" onclick="toggle(this)">
+        <div class="policy-header">
+          <div class="policy-num">07</div>
+          <div class="policy-meta">
+            <div class="policy-tags">
+              <span class="ptag cobit">COBIT</span>
+              <span class="ptag iso21">ISO 21001</span>
+              <span class="ptag pdca">PDCA</span>
+            </div>
+            <div class="policy-title">Política de Seguimiento y Mejora Continua del Sistema</div>
+          </div>
+          <div class="policy-toggle">+</div>
+        </div>
+        <div class="policy-body">
+          <div class="policy-section">
+            <div class="policy-section-title">Objetivo</div>
+            <p>Establecer un sistema permanente de evaluación del desempeño global de los laboratorios, garantizando la mejora continua y la actualización de políticas según los resultados obtenidos.</p>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Procedimiento de Implementación</div>
+            <ul class="steps-list">
+              <li>Definición y documentación de indicadores clave (KPIs) del sistema académico.</li>
+              <li>Medición periódica de resultados frente a objetivos establecidos.</li>
+              <li>Comparación temporal y análisis de brechas de desempeño.</li>
+              <li>Identificación de oportunidades de mejora y acciones correctivas.</li>
+              <li>Ajuste y actualización de políticas y estrategias según hallazgos.</li>
+            </ul>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Responsables</div>
+            <div class="responsible-row">
+              <span class="resp-chip">Dirección Académica</span>
+            </div>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-title">Indicadores KPI</div>
+            <div class="kpi-row">
+              <span class="kpi-chip">Cumplimiento de KPIs (%)</span>
+              <span class="kpi-chip">Número de mejoras implementadas</span>
+              <span class="kpi-chip">Ciclos de revisión completados / año</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- IMPLEMENTACIÓN -->
+  <section id="implementacion">
+    <div class="section-label">
+      <span class="num">05 — Implementación</span>
+    </div>
+    <h2>Plan de Implementación por Fases</h2>
+    <p>
+      Las políticas se implementan de forma progresiva en cuatro fases, siguiendo el ciclo PDCA y los
+      principios de gestión de cambio establecidos por COBIT e ISO 9001.
+    </p>
+
+    <div class="phases-timeline">
+      <div class="phase">
+        <div class="phase-dot">P</div>
+        <div class="phase-content">
+          <h4>Fase 1 · Planificación</h4>
+          <p>Socialización institucional de las políticas, designación de responsables, consolidación de bases de datos históricas y definición de líneas base para los KPIs.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-dot">D</div>
+        <div class="phase-content">
+          <h4>Fase 2 · Implementación</h4>
+          <p>Puesta en marcha de los procedimientos definidos en cada política: gestión de capacidad, planificación basada en datos, estandarización COCOCYS y gestión tecnológica.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-dot">C</div>
+        <div class="phase-content">
+          <h4>Fase 3 · Verificación</h4>
+          <p>Medición periódica de indicadores, análisis de resultados y generación de reportes de seguimiento. Identificación de brechas y áreas de oportunidad para ajuste.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-dot">A</div>
+        <div class="phase-content">
+          <h4>Fase 4 · Mejora Continua</h4>
+          <p>Revisión y actualización de políticas con base en la evidencia generada. Ajuste de procedimientos, capacitación complementaria y preparación del siguiente ciclo de evaluación.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<div style="max-width:1100px; margin: 0 auto; padding: 0 32px;">
+  <footer style="padding: 40px 0; border-top: 1px solid var(--border);">
+    <div class="footer-inner">
+      <div class="footer-logos">
+        <img src="logo-ecys-fiusac.png" alt="DITT-ECYS" />
+        <img src="Screenshot_2025-03-22_at_11_32_50_AM.png" alt="COCOCYS" />
+      </div>
+      <div class="footer-text">
+        Escuela de Ciencias y Sistemas · Facultad de Ingeniería · USAC<br />
+        Tesis: Diseño de Políticas Estratégicas para la Gestión de Laboratorios 2015–2025
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  function toggle(card) {
+    card.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
